@@ -160,3 +160,20 @@
   opacity: 0.75;
 }
 
+/* Ajoutez ces styles pour une meilleure transition */
+.slick-slider {
+  @apply transition-all duration-500 ease-out;
+}
+
+.slick-slide {
+  @apply opacity-0 transition-opacity duration-500;
+}
+
+.slick-slide.slick-active {
+  @apply opacity-100;
+}
+
+.slick-track {
+  @apply !flex items-stretch;
+}
+
