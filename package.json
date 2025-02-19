@@ -9,13 +9,24 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-three/drei": "^9.121.5",
+    "@react-three/fiber": "^8.17.14",
+    "class-variance-authority": "^0.7.1",
     "classnames": "^2.5.1",
+    "clsx": "^2.1.1",
     "framer-motion": "^12.4.2",
+    "globe.gl": "^2.39.7",
+    "lucide-react": "^0.475.0",
+    "mapbox-gl": "^3.10.0",
     "next": "15.1.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-map-gl": "^8.0.1",
     "react-slick": "^0.30.3",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "tailwind-merge": "^3.0.1",
+    "tailwindcss-animate": "^1.0.7",
+    "three": "^0.173.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

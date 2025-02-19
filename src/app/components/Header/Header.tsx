@@ -100,7 +100,19 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
   const [focusedItemIndex, setFocusedItemIndex] = useState<number>(-1)
+  const [hasScrolled, setHasScrolled] = useState(false)
   const submenuRefs = useRef<(HTMLDivElement | null)[]>([])
+
+  // Ajouter l'effet de scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY
+      setHasScrolled(scrollPosition > 0)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   // Gestion de la navigation au clavier
   useEffect(() => {
@@ -144,17 +156,25 @@ const Header = () => {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
-      <nav className="backdrop-blur-md bg-black/30 border-b border-white/10" role="navigation">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      hasScrolled ? 'backdrop-blur-xl bg-black/70' : ''
+    }`}>
+      <nav className={`transition-all duration-300 border-b border-white/10 ${
+        hasScrolled ? 'bg-transparent' : 'backdrop-blur-md bg-black/30'
+      }`} role="navigation">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 sm:h-20 md:h-24">
+          <div className={`flex items-center justify-between transition-all duration-300 ${
+            hasScrolled ? 'h-14 sm:h-16 md:h-20' : 'h-16 sm:h-20 md:h-24'
+          }`}>
             <div className="flex-shrink-0">
               <Image 
                 src="/images/logo/logo_ikki.webp" 
                 alt="Ikki Logo"
                 width={150}
                 height={150}
-                className="h-12 w-auto sm:h-16 md:h-20"
+                className={`w-auto transition-all duration-300 ${
+                  hasScrolled ? 'h-10 sm:h-12 md:h-16' : 'h-12 sm:h-16 md:h-20'
+                }`}
                 priority
               />
             </div>
